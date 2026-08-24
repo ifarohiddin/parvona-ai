@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Parvona AI — AI-powered safety monitoring for kindergartens and educational spaces." />
+  <title>Parvona AI — Safety Intelligence</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <div class="noise"></div>
+
+  <header class="nav wrap">
+    <a class="brand" href="#top" aria-label="Parvona AI home">
+      <img src="assets/parvona-ai-logo.png" alt="Parvona AI logo" onerror="this.style.display='none'">
+      <span>Parvona <b>AI</b></span>
+    </a>
+    <nav>
+      <a href="#solution">Solution</a>
+      <a href="#pilot">Pilot</a>
+      <a href="#features">Features</a>
+      <a href="#roadmap">Roadmap</a>
+      <a href="#team">Team</a>
+    </nav>
+    <a class="nav-cta" href="#pilot">View MVP</a>
+  </header>
+
+  <main id="top">
+    <section class="hero wrap">
+      <div class="hero-copy">
+        <div class="eyebrow">AI SAFETY FOR EDUCATION</div>
+        <h1>Safer spaces for children, powered by <span>computer vision.</span></h1>
+        <p>
+          Parvona AI analyzes video footage to help educational institutions detect
+          potentially unsafe situations faster — without replacing teachers or caregivers.
+        </p>
+        <div class="hero-actions">
+          <a class="btn primary" href="#pilot">Explore Real MP4 Pilot</a>
+          <a class="btn secondary" href="#solution">How it works</a>
+        </div>
+        <div class="trust-row">
+          <span>● Privacy-aware</span>
+          <span>● Human-in-the-loop</span>
+          <span>● MVP in development</span>
+        </div>
+      </div>
+
+      <div class="hero-card">
+        <div class="card-top">
+          <span>Parvona Safety Console</span>
+          <span class="status"><i></i> ACTIVE</span>
+        </div>
+
+        <div class="stats">
+          <div><b>04</b><span>Camera feeds</span></div>
+          <div><b>17</b><span>People detected</span></div>
+          <div><b>02</b><span>Active alerts</span></div>
+        </div>
+
+        <div class="camera">
+          <div class="camera-grid"></div>
+          <div class="person p1"></div>
+          <div class="person p2"></div>
+          <div class="person p3"></div>
+          <div class="bbox b1"><span>Child</span></div>
+          <div class="bbox b2 warning"><span>Attention</span></div>
+          <div class="camera-meta">
+            <span>CAM-01 · Classroom</span>
+            <span>LIVE SIMULATION</span>
+          </div>
+        </div>
+
+        <div class="alert">
+          <div class="alert-icon">!</div>
+          <div>
+            <b>Potential safety event detected</b>
+            <span>Human review recommended · 14:32:18</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="metrics wrap">
+      <div><b>MP4</b><span>Real video pilot</span></div>
+      <div><b>AI</b><span>Computer vision pipeline</span></div>
+      <div><b>24/7</b><span>Designed for continuous monitoring</span></div>
+      <div><b>1→16+</b><span>Scalable camera architecture</span></div>
+    </section>
+
+    <section class="section wrap" id="solution">
+      <div class="section-head">
+        <span class="eyebrow">THE PROBLEM</span>
+        <h2>One caregiver cannot watch every camera at every second.</h2>
+        <p>
+          Existing CCTV systems record events, but they do not actively help staff understand
+          what may require attention. Parvona AI is designed as an intelligent monitoring layer.
+        </p>
+      </div>
+
+      <div class="three">
+        <article>
+          <div class="icon">01</div>
+          <h3>Observe</h3>
+          <p>Analyze uploaded or live video feeds and detect people, movement and scene activity.</p>
+        </article>
+        <article>
+          <div class="icon">02</div>
+          <h3>Understand</h3>
+          <p>Evaluate event patterns and flag situations that may require a human review.</p>
+        </article>
+        <article>
+          <div class="icon">03</div>
+          <h3>Respond</h3>
+          <p>Surface alerts in a dashboard so authorized staff can react more quickly.</p>
+        </article>
+      </div>
+    </section>
+
+    <section class="section pilot-wrap" id="pilot">
+      <div class="wrap">
+        <div class="section-head split-head">
+          <div>
+            <span class="eyebrow">REAL MP4 PILOT</span>
+            <h2>From recorded footage to actionable safety events.</h2>
+          </div>
+          <span class="beta">MVP / PILOT</span>
+        </div>
+
+        <div class="pilot-grid">
+          <div class="upload-card">
+            <div class="upload-icon">↑</div>
+            <h3>Upload surveillance video</h3>
+            <p>Current pilot validates the AI pipeline using real MP4 footage before live CCTV integration.</p>
+
+            <label class="fake-upload">
+              <input type="file" id="videoInput" accept="video/mp4,video/*">
+              <span id="uploadLabel">Choose MP4 file</span>
+            </label>
+
+            <button class="btn primary full" id="analyzeBtn">Run Demo Analysis</button>
+            <div class="progress hidden" id="progress">
+              <div class="bar"><span id="barFill"></span></div>
+              <small id="progressText">Preparing analysis…</small>
+            </div>
+          </div>
+
+          <div class="timeline-card">
+            <div class="timeline-title">
+              <h3>Incident timeline</h3>
+              <span>Demo</span>
+            </div>
+            <div class="event">
+              <time>14:32</time>
+              <div><b>Potential conflict</b><span>Review recommended</span></div>
+              <em>HIGH</em>
+            </div>
+            <div class="event">
+              <time>14:38</time>
+              <div><b>Child without nearby supervisor</b><span>Observed for extended period</span></div>
+              <em class="med">MED</em>
+            </div>
+            <div class="event">
+              <time>14:41</time>
+              <div><b>Restricted-area presence</b><span>Unknown adult pattern</span></div>
+              <em class="med">MED</em>
+            </div>
+            <div class="event muted">
+              <time>14:44</time>
+              <div><b>Scene normal</b><span>No intervention required</span></div>
+              <em class="low">LOW</em>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section wrap" id="features">
+      <div class="section-head">
+        <span class="eyebrow">CORE FEATURES</span>
+        <h2>Built around practical safety workflows.</h2>
+      </div>
+
+      <div class="features">
+        <article><span>◈</span><h3>Video Intelligence</h3><p>Person detection, tracking and event-level analysis across frames.</p></article>
+        <article><span>⌁</span><h3>Smart Alerts</h3><p>Prioritize events that may need a staff member's attention.</p></article>
+        <article><span>▦</span><h3>Safety Dashboard</h3><p>Centralized camera, alert, status and incident review interface.</p></article>
+        <article><span>◎</span><h3>Zone Awareness</h3><p>Designed for classrooms, playgrounds, corridors and restricted areas.</p></article>
+        <article><span>◇</span><h3>Privacy by Design</h3><p>Role-based access and minimal-data architecture planned from the start.</p></article>
+        <article><span>↗</span><h3>Scalable Architecture</h3><p>Roadmap from MP4 pilot to multi-camera real-time deployment.</p></article>
+      </div>
+    </section>
+
+    <section class="section architecture">
+      <div class="wrap">
+        <div class="section-head">
+          <span class="eyebrow">SYSTEM FLOW</span>
+          <h2>Simple architecture, clear responsibilities.</h2>
+        </div>
+        <div class="flow">
+          <div><b>01</b><span>Video / CCTV</span></div><i>→</i>
+          <div><b>02</b><span>AI Detection</span></div><i>→</i>
+          <div><b>03</b><span>Event Logic</span></div><i>→</i>
+          <div><b>04</b><span>Alert Center</span></div><i>→</i>
+          <div><b>05</b><span>Human Review</span></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section wrap" id="roadmap">
+      <div class="section-head">
+        <span class="eyebrow">ROADMAP</span>
+        <h2>From pilot to real educational environments.</h2>
+      </div>
+
+      <div class="roadmap">
+        <article class="active"><small>PHASE 01</small><h3>Real MP4 Pilot</h3><p>Validate detection, tracking and alert logic using recorded footage.</p><b>Current</b></article>
+        <article><small>PHASE 02</small><h3>Live Camera MVP</h3><p>Connect real-time camera streams to the monitoring dashboard.</p><b>Next</b></article>
+        <article><small>PHASE 03</small><h3>Field Testing</h3><p>Pilot with partner institutions, evaluate accuracy and workflows.</p><b>Planned</b></article>
+        <article><small>PHASE 04</small><h3>Scale</h3><p>Multi-camera deployment, reporting and institution-level management.</p><b>Future</b></article>
+      </div>
+    </section>
+
+    <section class="section team-section" id="team">
+      <div class="wrap">
+        <div class="section-head">
+          <span class="eyebrow">TEAM</span>
+          <h2>Small team, focused mission.</h2>
+        </div>
+
+        <div class="team">
+          <article>
+            <div class="avatar">F</div>
+            <h3>Farohiddin Isomiddinov</h3>
+            <p>Founder, Project Lead & AI Engineer</p>
+          </article>
+          <article>
+            <div class="avatar">01</div>
+            <h3>Team Member</h3>
+            <p>Full-Stack / Backend Engineer</p>
+          </article>
+          <article>
+            <div class="avatar">02</div>
+            <h3>Team Member</h3>
+            <p>Frontend / Product Engineer</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="cta wrap">
+      <div>
+        <span class="eyebrow">PARVONA AI</span>
+        <h2>Turning passive CCTV into proactive safety intelligence.</h2>
+        <p>Current MVP is under active development. This page will continue to update while keeping the same public URL.</p>
+      </div>
+      <a class="btn primary" href="mailto:team@parvona.ai">Contact Team</a>
+    </section>
+  </main>
+
+  <footer class="wrap">
+    <div class="brand small"><span>Parvona <b>AI</b></span></div>
+    <p>AI-assisted safety monitoring for educational environments.</p>
+    <span>© 2026 Parvona AI</span>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
