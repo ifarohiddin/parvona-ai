@@ -63,3 +63,4 @@ footer{border-top:1px solid var(--line);min-height:120px;display:flex;justify-co
 @media(max-width:600px){
   .wrap{width:min(100% - 24px,1160px)}.nav{height:72px}.nav-cta{display:none}.hero{gap:34px;padding-bottom:60px}.hero h1{letter-spacing:-2px}.hero-actions{flex-direction:column}.btn{width:100%}.metrics{grid-template-columns:1fr}.metrics div{border-right:0;border-bottom:1px solid var(--line)}.three,.features,.team,.roadmap{grid-template-columns:1fr}.section{padding:80px 0}.split-head{display:block}.beta{display:inline-block;margin-top:15px}.stats{grid-template-columns:1fr}.camera{height:230px}.cta{margin-top:70px;padding:28px}footer{flex-direction:column;justify-content:center;text-align:center;padding:30px 0}
 }
+.roadmap-link{margin-top:22px;text-align:center}

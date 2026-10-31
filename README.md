@@ -10,6 +10,33 @@ Loyiha real-time kameralar orqali hududdagi odamlarni aniqlash, kuzatish va tani
 
 ---
 
+## ✅ Hozir repoda ishlaydigan qismlar
+
+| Qism | Holat | Nima qiladi |
+|---|---|---|
+| [`video_to_frames_app/`](video_to_frames_app/) | ✅ Ishlaydi | Video'dan frame ajratadi, `best.pt` (YOLO26n) bilan odamlarni avtomatik belgilaydi, belgilarni qo'lda tuzatish va YOLO formatidagi train/valid/test dataset'ni zip qilib olish (Gradio) |
+| [`parvona_ai_mvp/index.html`](parvona_ai_mvp/index.html) | ✅ Statik landing | Loyiha taqdimoti. "Demo analysis" tugmasi **simulyatsiya**: video hali haqiqiy modelga yuborilmaydi |
+| [`parvona_ai_mvp/roadmap.html`](parvona_ai_mvp/roadmap.html) | ✅ Ishlaydi | MVP → V2 → V3 bo'yicha 52 ta task: filtr, qidiruv, holatni belgilash (brauzerda saqlanadi), CSV eksport |
+| Real-time kamera, tracking, face recognition, alertlar, dashboard | 🗓️ Rejada | Quyidagi arxitektura va roadmap bo'limlarida tasvirlangan |
+
+### Tez ishga tushirish
+
+```bash
+git clone https://github.com/ifarohiddin/parvona-ai.git
+cd parvona-ai
+
+# 1) Dataset tayyorlash vositasi (Python 3.12 bilan sinalgan)
+cd video_to_frames_app
+pip install -r requirements.txt
+python video_to_dataset_app.py          # http://localhost:7862
+
+# 2) Veb-MVP (landing va roadmap)
+cd ../parvona_ai_mvp
+python -m http.server 8000              # http://localhost:8000 va /roadmap.html
+```
+
+---
+
 ## 🎯 Loyiha muammosi
 
 An’anaviy videokuzatuv tizimlarida kameralar videoni yozib oladi, lekin barcha kameralarni doimiy ravishda inson kuzatib borishi kerak.
@@ -178,16 +205,24 @@ YOLO Training Dataset
 
 Bu tool yordamida mavjud videolardan kerakli frame'larni ajratib olish va keyingi AI model training jarayoni uchun dataset tayyorlash mumkin.
 
+Imkoniyatlari:
+
+* bir nechta videoni bir vaqtda yuklash, har N-kadrdan bittasini olish;
+* `best.pt` modeli bilan `person` belgilarini avtomatik qo'yish (ishonch chegarasi sozlanadi);
+* noto'g'ri box'ni o'chirish, rasmda ikki nuqta bosib yangi box chizish, keraksiz kadrni olib tashlash;
+* har bir video ichida **ketma-ket** train/valid/test bo'linishi (yaqin kadrlar turli splitlarga tushib, natijani sun'iy oshirmasligi uchun);
+* `data.yaml` bilan tayyor YOLO dataset'ni zip qilib yuklab olish.
+
+Batafsil: [`video_to_frames_app/README.txt`](video_to_frames_app/README.txt).
+
 Shunday qilib:
 
 ```text
 Parvona AI
 │
-├── MVP
-│   └── Real-time AI safety system
+├── parvona_ai_mvp        → landing va roadmap (real-time tizim hali rejada)
 │
-└── video_to_frames_app
-    └── Dataset preparation tool
+└── video_to_frames_app   → dataset tayyorlash vositasi (ishlaydi)
 ```
 
 `video_to_frames_app` — alohida mahsulot emas, balki **Parvona AI AI/data pipeline'ini qo‘llab-quvvatlovchi komponent** hisoblanadi.
@@ -418,15 +453,15 @@ AI tizimi tomonidan berilgan qarorlar muhim xavfsizlik qarorlarida imkon qadar i
 
 ## Phase 1 — POC
 
-* [x] Basic video processing
-* [x] Initial computer vision pipeline
-* [x] Dataset preparation tool
+* [x] Basic video processing (frame ajratish)
+* [x] Initial computer vision pipeline (YOLO26n bilan odam aniqlash, auto-label)
+* [x] Dataset preparation tool (`video_to_frames_app`)
+* [x] Landing sahifa va interaktiv roadmap (`parvona_ai_mvp`)
 
 ## Phase 2 — MVP
 
-* [x] Working MVP
 * [ ] Real-time camera integration
-* [ ] Person detection
+* [ ] Real-time person detection (hozircha faqat yozib olingan videolarda)
 * [ ] Face recognition
 * [ ] Tracking
 * [ ] Dashboard
@@ -475,53 +510,37 @@ Haqiqiy performance loyihaning validation datasetida o‘lchanadi.
 Repository clone qilinadi:
 
 ```bash
-git clone https://github.com/ifarohiddin/Parvona-AI.git
-cd Parvona-AI
+git clone https://github.com/ifarohiddin/parvona-ai.git
+cd parvona-ai
 ```
 
-Kerakli branchga o'tish:
-
-```bash
-git checkout main
-```
-
-Agar development branch ishlatilsa:
-
-```bash
-git checkout feature/video-to-frame
-```
+Barcha kod `main` branchida. Ishga tushirish buyruqlari yuqoridagi **"Tez ishga tushirish"** bo'limida.
 
 ---
 
 # 📁 Repository Structure
 
-Repository rivojlanishi bilan taxminiy structure:
-
 ```text
-Parvona-AI/
-│
+parvona-ai/
 ├── README.md
 ├── .gitignore
-├── LICENSE
-│
-├── mvp/
-│   ├── frontend/
-│   ├── backend/
-│   └── ...
-│
-├── video_to_frames_app/
-│   ├── README.md
-│   ├── requirements.txt
-│   └── ...
-│
-├── docs/
-│   ├── architecture/
-│   └── ...
-│
-└── ...
+├── parvona_ai_mvp/              # statik veb-MVP (Netlify)
+│   ├── index.html               # landing
+│   ├── script.js                # "Demo analysis" simulyatsiyasi
+│   ├── roadmap.html             # interaktiv roadmap
+│   ├── roadmap.css
+│   ├── app.js                   # roadmap: 52 ta task va ularning mantig'i
+│   ├── styles.css
+│   ├── netlify.toml
+│   └── assets/parvona-ai-logo.png
+└── video_to_frames_app/         # dataset tayyorlash vositasi (Gradio)
+    ├── video_to_dataset_app.py
+    ├── best.pt                  # YOLO26n odam aniqlash modeli
+    ├── requirements.txt
+    └── README.txt
 ```
 
-> Repositorydagi real papkalar MVP va boshqa komponentlar GitHub'ga qo‘shilishi bilan yangilanadi.
+Real-time backend, dashboard va boshqa komponentlar qo'shilgani sari bu tuzilma yangilanadi.
 
 ---
 

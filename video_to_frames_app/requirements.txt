@@ -1,4 +1,5 @@
-ultralytics
+ultralytics>=8.4.0   # best.pt YOLO26 modeli; 8.4.194 bilan sinalgan
 opencv-python
 gradio
 numpy
+matplotlib

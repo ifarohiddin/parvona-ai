@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Parvona AI — MVP, V2 va V3 bosqichlari bo'yicha ishlar rejasi va progress." />
+  <title>Parvona AI — Roadmap</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="roadmap.css" />
+</head>
+<body>
+  <div class="layout">
+    <aside class="sidebar" id="sidebar">
+      <a class="brand" href="index.html">
+        <img src="assets/parvona-ai-logo.png" alt="" />
+        <span>Parvona <b>AI</b></span>
+      </a>
+      <nav class="side-nav" aria-label="Bo'limlar">
+        <a href="#overview">Umumiy holat</a>
+        <a href="#phases">Bosqichlar</a>
+        <a href="#tasks">Tasklar</a>
+        <a href="index.html">← Bosh sahifa</a>
+      </nav>
+      <div class="side-actions">
+        <button type="button" id="exportButton" class="btn">CSV yuklab olish</button>
+        <button type="button" id="resetProgress" class="btn btn-ghost">Progressni tiklash</button>
+        <button type="button" id="themeToggle" class="btn btn-ghost" aria-label="Mavzuni almashtirish">◐ Mavzu</button>
+      </div>
+    </aside>
+    <div class="overlay" id="mobileOverlay"></div>
+
+    <main class="content">
+      <header class="topbar">
+        <button type="button" class="menu-button" id="menuButton" aria-controls="sidebar" aria-expanded="false" aria-label="Menyu">☰</button>
+        <div>
+          <span class="eyebrow">ROADMAP</span>
+          <h1>Parvona AI: pilotdan production'gacha</h1>
+        </div>
+      </header>
+
+      <section id="overview" class="metrics">
+        <article class="metric metric-wide">
+          <small>Umumiy progress</small>
+          <strong id="totalProgress">0%</strong>
+          <div class="bar"><span id="totalProgressBar"></span></div>
+        </article>
+        <article class="metric"><small>Bajarildi</small><strong><span id="doneCount">0</span> / <span id="totalCount">0</span></strong></article>
+        <article class="metric"><small>Jarayonda</small><strong id="doingCount">0</strong></article>
+        <article class="metric"><small>Ochiq kritik tasklar</small><strong id="criticalCount">0</strong></article>
+        <article class="metric metric-wide focus">
+          <small>Hozirgi fokus · <span id="currentFocus">-</span></small>
+          <strong id="focusText">-</strong>
+        </article>
+      </section>
+
+      <section id="phases" class="phases">
+        <article class="phase-summary active" data-phase-card="MVP" role="button" tabindex="0">
+          <small>BOSQICH 01</small><h3>MVP</h3><p>16 kamera, odam aniqlash, kuzatuv, asosiy alertlar va pilot.</p>
+          <div class="phase-progress"><span id="mvpProgress">0%</span><div class="bar"><span id="mvpBar"></span></div></div>
+        </article>
+        <article class="phase-summary" data-phase-card="V2" role="button" tabindex="0">
+          <small>BOSQICH 02</small><h3>V2</h3><p>Pose estimation, yiqilish va janjalni aniqlash.</p>
+          <div class="phase-progress"><span id="v2Progress">0%</span><div class="bar"><span id="v2Bar"></span></div></div>
+        </article>
+        <article class="phase-summary" data-phase-card="V3" role="button" tabindex="0">
+          <small>BOSQICH 03</small><h3>V3</h3><p>Ko'p filial, enterprise xavfsizlik, compliance va scale.</p>
+          <div class="phase-progress"><span id="v3Progress">0%</span><div class="bar"><span id="v3Bar"></span></div></div>
+        </article>
+      </section>
+
+      <section id="tasks" class="tasks">
+        <div class="tasks-head">
+          <div class="phase-tabs" role="tablist">
+            <button type="button" class="active" data-phase="all">Hammasi <span id="allTabCount">0</span></button>
+            <button type="button" data-phase="MVP">MVP <span id="mvpTabCount">0</span></button>
+            <button type="button" data-phase="V2">V2 <span id="v2TabCount">0</span></button>
+            <button type="button" data-phase="V3">V3 <span id="v3TabCount">0</span></button>
+          </div>
+          <div class="view-toggle">
+            <button type="button" data-view="grid" aria-label="Kartochkalar">▦</button>
+            <button type="button" data-view="list" aria-label="Ro'yxat">☰</button>
+          </div>
+        </div>
+
+        <div class="filters">
+          <input type="search" id="searchInput" placeholder="Qidirish: ID, nom, kategoriya…" aria-label="Qidirish" />
+          <select id="categoryFilter" aria-label="Kategoriya"><option value="all">Barcha kategoriyalar</option></select>
+          <select id="statusFilter" aria-label="Holat">
+            <option value="all">Barcha holatlar</option>
+            <option value="todo">Rejada</option>
+            <option value="doing">Jarayonda</option>
+            <option value="done">Bajarildi</option>
+          </select>
+          <select id="priorityFilter" aria-label="Prioritet">
+            <option value="all">Barcha prioritetlar</option>
+            <option value="critical">Kritik</option>
+            <option value="high">Yuqori</option>
+            <option value="medium">O‘rta</option>
+            <option value="low">Past</option>
+          </select>
+          <button type="button" id="resetFilters" class="btn btn-ghost">Filtrlarni tozalash</button>
+        </div>
+
+        <p class="result-count" id="resultCount"></p>
+        <div class="task-grid" id="taskGrid"></div>
+        <div class="empty-state" id="emptyState" hidden>
+          <p>Bu filtrlarga mos task topilmadi.</p>
+          <button type="button" id="emptyReset" class="btn">Filtrlarni tozalash</button>
+        </div>
+      </section>
+    </main>
+  </div>
+
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+  <script src="app.js"></script>
+</body>
+</html>
