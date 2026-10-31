@@ -35,6 +35,15 @@ cd ../parvona_ai_mvp
 python -m http.server 8000              # http://localhost:8000 va /roadmap.html
 ```
 
+### Veb-MVP'ni Netlify'ga chiqarish
+
+1. [app.netlify.com](https://app.netlify.com) → **Add new site** → **Import an existing project** → **GitHub**.
+2. Ro'yxatdan `ifarohiddin/parvona-ai` reposini tanlang (private bo'lsa, Netlify'ga shu repoga ruxsat bering).
+3. Sozlamalar `netlify.toml` dan avtomatik olinadi (base: `parvona_ai_mvp`, build yo'q), hech narsani o'zgartirmay **Deploy** ni bosing.
+4. Shundan keyin `main` ga har bir push saytni avtomatik yangilaydi. Manzilni **Site configuration → Change site name** orqali o'zgartirish mumkin.
+
+`video_to_frames_app` Python (Gradio + YOLO) ilovasi, Netlify'da ishlamaydi. Uni lokal kompyuterda ishga tushiring.
+
 ---
 
 ## 🎯 Loyiha muammosi

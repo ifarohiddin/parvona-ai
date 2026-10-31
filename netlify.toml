@@ -1,0 +1,13 @@
+# Netlify: repo ildizidan import qilinganda veb-MVP papkasini tarqatadi.
+# (parvona_ai_mvp/netlify.toml shu papkani alohida drag & drop qilish uchun.)
+[build]
+  base = "parvona_ai_mvp"
+  publish = "."
+  command = ""
+
+[[headers]]
+  for = "/*"
+  [headers.values]
+    X-Frame-Options = "SAMEORIGIN"
+    X-Content-Type-Options = "nosniff"
+    Referrer-Policy = "strict-origin-when-cross-origin"
